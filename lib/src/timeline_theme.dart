@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'connector_theme.dart';
 import 'indicator_theme.dart';
@@ -43,7 +42,7 @@ class TimelineTheme extends StatelessWidget {
   /// The data from the closest [TimelineTheme] instance that encloses the given
   /// context.
   ///
-  /// Defaults to [new ThemeData.fallback] if there is no [Theme] in the given
+  /// Defaults to [ThemeData.fallback] if there is no [Theme] in the given
   /// build context.
   ///
   /// When the [TimelineTheme] is actually created in the same `build` function
@@ -166,7 +165,6 @@ class _InheritedTheme extends InheritedTheme {
 /// ```
 /// {@end-tool}
 ///
-/// {@tool snippet}
 @immutable
 class TimelineThemeData with Diagnosticable {
   /// Create a [TimelineThemeData] that's used to configure a [TimelineTheme].
@@ -189,6 +187,7 @@ class TimelineThemeData with Diagnosticable {
     direction ??= Axis.vertical;
     color ??= Colors
         .blue; // TODO: Need to change the default color to the theme color?
+    color ??= Colors.blue;
     nodePosition ??= 0.5;
     nodeItemOverlap ??= false;
     indicatorPosition ??= 0.5;
@@ -205,7 +204,7 @@ class TimelineThemeData with Diagnosticable {
     );
   }
 
-  /// The default direction theme. Same as [new TimelineThemeData.vertical].
+  /// The default direction theme. Same as [TimelineThemeData.vertical].
   ///
   /// This is used by [TimelineTheme.of] when no theme has been specified.
   factory TimelineThemeData.fallback() => TimelineThemeData.vertical();
@@ -215,7 +214,7 @@ class TimelineThemeData with Diagnosticable {
   ///
   /// This will rarely be used directly. It is used by [lerp] to create
   /// intermediate themes based on two themes created with the
-  /// [new TimelineThemeData] constructor.
+  /// [TimelineThemeData.new] constructor.
   const TimelineThemeData.raw({
     required this.direction,
     required this.color,
@@ -343,7 +342,7 @@ class TimelineThemeData with Diagnosticable {
       indicatorTheme,
       connectorTheme,
     ];
-    return hashList(values);
+    return Object.hashAll(values);
   }
 
   @override

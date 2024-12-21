@@ -99,6 +99,10 @@ class IndicatorThemeData with Diagnosticable {
   }
 }
 
+int hashValues(Color? color, double? size, double? position) {
+   return Object.hash(color, size, position);
+ }
+
 /// Controls the default color and size of indicators in a widget subtree.
 ///
 /// The indicator theme is honored by [TimelineNode], [DotIndicator] and

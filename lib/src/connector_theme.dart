@@ -111,6 +111,10 @@ class ConnectorThemeData with Diagnosticable {
       ..add(DoubleProperty('thickness', thickness, defaultValue: null))
       ..add(DoubleProperty('indent', indent, defaultValue: null));
   }
+  
+  int hashValues(Color? color, double? space, double? thickness, double? indent) {
+    return Object.hash(color, space, thickness, indent);
+  }
 }
 
 /// An inherited widget that defines the configuration for
